@@ -9,8 +9,7 @@ public class MainLogic {
     public static boolean exit(boolean execute){
         System.out.println("Would you like to exit?? Enter Y or N");
         char option = sc.next().charAt(0);
-        if(option == 'Y') return false;
-        else return true;
+        return option != 'Y';
     }
 
     public static void clearScreen(){
@@ -43,6 +42,12 @@ public class MainLogic {
         return actualPIN == enteredPIN;
     }
 
+    public static int verifyUser(DataBase db){
+        System.out.print("Enter Username: ");
+        String reqName = sc.next();
+        return db.checkInDataBase(reqName);
+    }
+
     public static void createAccount(DataBase db){
         System.out.println("-----------------------------------------------");
         System.out.print("Enter new UserName: ");
@@ -63,9 +68,7 @@ public class MainLogic {
             displayOptions();
             int choice = myChoice();
             if(choice == 1){
-                System.out.print("Enter Username: ");
-                String reqName = sc.next();
-                int index = db.checkInDataBase(reqName);
+                int index =  verifyUser(db);
                 if(index != -1){
                     if( pinVerification(db, index) ){
                         db.get(index).checkBalance();
@@ -76,9 +79,7 @@ public class MainLogic {
                 execute = exit(execute);
             }   
             else if(choice == 2){
-                System.out.print("Enter Username: ");
-                String reqName = sc.next();
-                int index = db.checkInDataBase(reqName);
+                int index =  verifyUser(db);
                 if(index != -1){
                     if( pinVerification(db, index) ){
                         System.out.print("Enter Amount: ");
@@ -91,9 +92,7 @@ public class MainLogic {
                 execute = exit(execute);
             }
             else if(choice == 3){
-                System.out.print("Enter Username: ");
-                String reqName = sc.next();
-                int index = db.checkInDataBase(reqName);
+                int index =  verifyUser(db);
                 if(index != -1){
                     if( pinVerification(db, index) ){
                         System.out.print("Enter Amount: ");
