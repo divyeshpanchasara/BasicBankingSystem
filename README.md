@@ -25,5 +25,5 @@ The provided Java project is a simple command-line-based banking system. It incl
 
     - **Exit Functionality:**
         - Users can exit the application by selecting the exit option in the menu.
-
+3. **Note** : When running the program, please be aware that the database starts empty each time, requiring new accounts to be created or added during the session for testing or demonstration purposes.
 This project provides a foundation for a simple banking system, but additional improvements could be made to refine its functionalities and security measures.
