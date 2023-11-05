@@ -4,9 +4,10 @@ import bank.DataBase;
 
 public class MainLogic {
 
+    private static final Scanner sc = new Scanner(System.in);
+
     public static boolean exit(boolean execute){
         System.out.println("Would you like to exit?? Enter Y or N");
-        Scanner sc = new Scanner(System.in);
         char option = sc.next().charAt(0);
         if(option == 'Y') return false;
         else return true;
@@ -27,7 +28,6 @@ public class MainLogic {
     }
 
     public static int myChoice() {
-        Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         while ( choice < 1 || choice > 7) {
             System.out.println("INVALID OPTION!! please enter again!!");
@@ -37,7 +37,6 @@ public class MainLogic {
     }
 
     public static boolean pinVerification(DataBase db, int index){
-        Scanner sc = new Scanner(System.in);
         System.out.print("Enter PIN: ");
         int enteredPIN = sc.nextInt();
         int actualPIN = db.get(index).getPIN();
@@ -45,7 +44,6 @@ public class MainLogic {
     }
 
     public static void createAccount(DataBase db){
-        Scanner sc = new Scanner(System.in);
         System.out.println("-----------------------------------------------");
         System.out.print("Enter new UserName: ");
         String name = sc.next();
@@ -57,7 +55,6 @@ public class MainLogic {
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         DataBase db = new DataBase(null, 0);
         boolean execute = true;
         while (execute) {
