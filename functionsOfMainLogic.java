@@ -58,4 +58,45 @@ public class functionsOfMainLogic {
         db.myDataBase.add(acc);
         System.out.println("-----------------------------------------------");
     }
+
+    public static void accountError(){
+        System.out.println("Account dosent Exist!!");
+    }
+
+    public static void executeCheckBalance(DataBase db){
+        int index =  functionsOfMainLogic.verifyUser(db);
+        if(index != -1){
+            if( functionsOfMainLogic.pinVerification(db, index) ){
+                db.get(index).checkBalance();
+            }
+            else System.out.println("Worng Pin");
+        }
+        else functionsOfMainLogic.accountError();
+    }
+
+    public static void executeDepositeAmount(DataBase db){
+        int index =  functionsOfMainLogic.verifyUser(db);
+        if(index != -1){
+            if( functionsOfMainLogic.pinVerification(db, index) ){
+                System.out.print("Enter Amount: ");
+                float amount = sc.nextFloat();
+                db.get(index).depositAmount(amount);
+            }
+            else System.out.println("Worng Pin");
+        }
+        else functionsOfMainLogic.accountError();
+    }
+
+    public static void executeWithdrawAmount(DataBase db){
+        int index =  functionsOfMainLogic.verifyUser(db);
+        if(index != -1){
+            if( functionsOfMainLogic.pinVerification(db, index) ){
+                System.out.print("Enter Amount: ");
+                float amount = sc.nextFloat();
+                db.get(index).withdrawAmount(amount);
+            }
+            else System.out.println("Worng Pin");
+        }
+        else functionsOfMainLogic.accountError();
+    }
 }
